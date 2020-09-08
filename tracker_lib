@@ -1,0 +1,25 @@
+STEPS_GOAL = 10000
+WATER_GOAL = 64
+SLEEP_GOAL = 8
+
+
+def track_steps(steps):
+    if steps < STEPS_GOAL:
+        goal = "Goal not met."
+    else:
+        goal = "Goal met!"
+    return goal
+
+def track_water(water):
+    if water < WATER_GOAL:
+        goal = "Goal not met."
+    else:
+        goal = "Goal met!"
+    return goal
+
+def track_sleep(sleep):
+    if sleep < SLEEP_GOAL:
+        goal = "Goal not met."
+    else:
+        goal = "Goal met!"
+    return goal

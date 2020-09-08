@@ -1,0 +1,57 @@
+
+# print your results format the spaces correctly
+    print('_____________________________________________________________')
+    print('---------Values Table-------')
+    print('Word' + '\t' + 'Score' + '\t' + 'Running Score')
+    keep_score = compute_value(word_list)
+    display_results(word_list, keep_score)
+
+
+def display_results(word_list, keep_score):
+    score = 0
+    for i in range(len(word_list)):
+        score += keep_score[i]
+        print('%s\t\t%d\t\t%d' % (word_list[i], keep_score[i], score))
+    print('\n Total Score:', score)
+
+# function to add up you total score and compute at the end
+def compute_value(word_list):
+    keep_score = []
+    for word in word_list:
+        score = 0
+        score += check_vowel(word)
+        score += check_common(word)
+        score += check_numeric(word)
+        keep_score.append(score)
+    return keep_score
+
+
+# function for vowels
+# 1 point for each vowel used (a,e,i,o,u)
+def check_vowel(word):
+    score = 0
+    for letter in word:
+        if letter in ['a', 'e', 'i', 'o', 'u']:
+            score += 1
+    return score
+
+
+# function for common letter
+# 3 points for each common letter used (r,s,t,l,n)
+def check_common(word):
+    for letter in word:
+        if letter in ['r', 's', 't', 'l', 'n']:
+            return 3
+    return 0
+
+
+# function for numbers
+# 1 point for each number used (3,4,5,6,7)
+def check_numeric(word):
+    for letter in word:
+        if letter in ['3', '4', '5', '6', '7']:
+            return 5
+    return 0
+
+
+main()

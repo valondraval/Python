@@ -1,0 +1,47 @@
+import tracker_lib
+
+STEPS_GOAL = 10000
+WATER_GOAL = 64
+SLEEP_GOAL = 8
+
+def main():
+    display_menu()
+
+    choice = int(input("\nWhat do you want to track today? \n>> "))
+    print()
+    # Get Input
+    if choice == 1 or choice == 4 or choice == 5 or choice == 7:
+        steps = int(input("Enter number of steps: "))
+
+    if choice == 2 or choice == 4 or choice == 6 or choice == 7:
+        water = int(input("Enter ounces of water: "))
+
+    if choice == 3 or choice == 5 or choice == 6 or choice == 7:
+        sleep = float(input("Enter hours of sleep: "))
+
+    print("Your results: ")
+
+    # Process and output
+    if choice == 1 or choice == 4 or choice == 5 or choice ==7:
+        result = tracker_lib.track_steps(steps)
+        print("Your steps:\t" + str("{:>15,}".format(steps)) + "\t\t" + "Goal: " + str("{:>10,}".format(STEPS_GOAL)) + "\t\t" + result)
+
+    if choice == 2 or choice == 4 or choice == 6 or choice == 7:
+        result = tracker_lib.track_water(water)
+        print("Your water:\t" + str("{:>15,}".format(water)) + "\t\t" + "Goal: " + str(
+            "{:>10,}".format(WATER_GOAL)) + "\t\t" + result)
+    if choice == 3 or choice == 5 or choice == 6 or choice ==7:
+        result = tracker_lib.track_sleep(sleep)
+        print("Your sleep:\t" + str("{:>15,}".format(sleep)) + "\t\t" + "Goal: " + str(
+            "{:>10,}".format(SLEEP_GOAL)) + "\t\t" + result)
+def display_menu():
+    print("Choose a number from the menu\n")
+    print("1) Track Steps")
+    print("2) Track Water")
+    print("3) Track Sleep")
+    print("4) Track Step and Water")
+    print("5) Track Steps and Sleep")
+    print("6) Track Water and Sleep")
+    print("7) Track All")
+
+main()

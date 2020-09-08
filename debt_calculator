@@ -1,0 +1,83 @@
+# Alondra Valenzuela
+# April 7, 2019
+
+import math
+#   get user input for debt, salary, and salary percent
+
+ask = 'yes'
+again = True
+while again:
+    ask == 'yes'
+    while True:
+        if ask == 'yes':
+            again = True
+            salary = float(input('Enter your salary:'))
+            debt = float(input('Enter your debt:'))
+            salary_percent = float(input('Enter your percent:'))
+
+            def request_salary():
+                return salary
+
+            def monthly_salary():
+                salary = request_salary()
+                monthly_salary = (salary/12)
+                return monthly_salary
+
+            def request_debt():
+                return debt
+
+            def request_percent():
+                return salary_percent
+
+            def format_money(val):
+                val = '$' + format(float(val), ',.2f')
+                return val
+
+            def monthly_payment():
+                monthly_payment = (monthly_salary()*(request_percent()))
+                return monthly_payment
+
+            def num_months():
+                num_months = math.ceil(debt/monthly_payment())
+                return num_months
+
+        # print resource information
+            def display_results():
+                print('--------Resource Information--------')
+                print('Your current amount of debt is: ' + format_money(request_debt()))
+                print('Your current yearly salary is: ' + format_money(request_salary()))
+                print('Your current monthly salary is: ' + format_money(monthly_salary()))
+                print("Your chosen percent of salary to pay down is: "+"{:.0%}".format(salary_percent))
+                print('Your monthly payment to debt will be: ', format_money(monthly_payment()))
+                print('Months to pay off debt:', num_months())
+
+            def main(debt):
+                print('-----The following table shows your payoff schedule-----')
+                print('Month     Payment     Remaining Debt')
+                month = 1
+                payment = int(monthly_payment())
+                debt = int(debt)
+
+                while num_months() >= month:
+                    debt = debt - payment
+                    print(month,'     ',format_money(payment),'     ', format_money(debt))
+                    month = month + 1
+                    if payment > debt:
+                        payment = debt
+
+            display_results()
+            main(request_debt())
+
+
+            ask = input('Enter "yes" to continue, "no" to end:').lower()
+
+            break
+        elif ask == 'no':
+            again = False
+            break
+        else:
+            ask = input('Invalid input, please say "yes" to continue or "no" to end').lower()
+
+
+
+
